@@ -1,0 +1,48 @@
+.index{
+    width: 550px;
+    margin: auto;
+    text-align: center;
+}
+/* ListItem */
+.listItem{
+    width: 550px;
+    border : 1px solid red
+}
+.listItem-isChose{
+    width: 550px;
+    border : 1px solid red
+}
+.listItem span{
+    color:#888
+}
+.listItem-isChose span{
+    color: #888;
+    text-decoration: line-through;
+}
+.list{
+    border: 1px solid red;
+    
+}
+/* 底部 */
+.footer{
+    width: 550px;
+    height: 30px;
+    border: 1px solid #999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto
+}
+/* 导航 */
+.tabBav{
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.tabBav div{
+    margin-left: 20px;
+}
+.active{
+    border: 1px solid red;
+    border-radius: 4px;
+}
