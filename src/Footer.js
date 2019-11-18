@@ -1,52 +1,72 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
+const tabs = ['All', 'Active', 'Completed']
 
 class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            tab : ['All','Active','Completed'],
-            current : 0, //控制切换判断
-            show : false
-         }
+  constructor(props) {
+    super(props)
+    this.state = {
+      // tab : ['All','Active','Completed'],
+      //   current: 'All', //控制切换判断
+      show: false
     }
-    render() { 
-        return ( 
-            //style={{display:this.props.itemLeth>0?'flex':'none'}}
-            <div className="footer">
-                <div className="Number"> {this.props.itemLeth} 
-                 {this.props.items%2===0 && this.props.items>1?'items': 'item'} left</div>
-                    <div className="tabBav">
-                        {
+  }
+  render() {
+    const { filter, filterStatus, clearCompleted, itemLeft } = this.props
+    return (
+      //style={{display:this.props.itemLeth>0?'flex':'none'}}
+      <div className="footer">
+        <div className="Number">
+          {' '}
+          {itemLeft}
+          {itemLeft % 2 === 0 && itemLeft > 1 ? 'items' : 'item'} left
+        </div>
+        <div className="tabBav">
+          {/* {
                             this.state.tab.map((item,index)=>{
                                 return(
                                      <div
                                     key={item+index}
-                                    onClick={this.tab.bind(this,index)}
+                                    // onClick={this.tab.bind(this,index)}
+                                    onClick={filter}
                                     className = {this.state.current === index ? 'active':''}
                                     > {item} </div>
                                 )
                             })
-                        }
-                    </div>
-                        <button
-                        onClick = {this.clear.bind(this)}
-                        >clear Completed</button>
-                    </div>
-         );
-    }
-     //切换
-     tab(current){
-        this.setState({
-            current : current
-        },()=>{
-            this.props.taBav(current)
-        })
-        
-    }
-    //清空选中
-    clear(){
-         this.props.clearCompleted()
-    }
+                        } */}
+          {tabs.map((item, index) => {
+            return (
+              <div
+                key={item + index}
+                // onClick={this.tab.bind(this,index)}
+                onClick={() => filter(item)}
+                className={filterStatus === index ? 'active' : ''}
+              >
+                {item}
+              </div>
+            )
+          })}
+        </div>
+        {/* <button onClick={this.clear.bind(this)}>clear Completed</button> */}
+        <button onClick={clearCompleted}>clear Completed</button>
+      </div>
+    )
+  }
+  //   //切换
+  //   tab(current) {
+  //     this.setState(
+  //       {
+  //         current: current
+  //       },
+  //       () => {
+  //         this.props.taBav(current)
+  //       }
+  //     )
+  //   }
+  //   //清空选中
+  //   clear() {
+  //     this.props.clearCompleted()
+  //   }
 }
- 
-export default Footer;
+
+export default Footer
